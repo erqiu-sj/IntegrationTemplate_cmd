@@ -28,14 +28,17 @@ func Cmd(name string, arg string) {
 	}
 }
 
-func DivisionCmdRun(cmd string) {
+// DivisionCmdRun 分割终端执行命令行字符串，转为一个二维数组
+func DivisionCmdRun(cmd string) [][]string {
+	var result [][]string
 	if DefaultSkip(cmd) {
-		return
+		return result
 	}
 	trimSpace := strings.TrimSpace(cmd)
 	allCommands := strings.Split(trimSpace, "& ")
 	for _, command := range allCommands {
 		commandItem := strings.SplitN(command, " ", 2)
-		Cmd(commandItem[0], commandItem[1])
+		result = append(result, commandItem)
 	}
+	return result
 }

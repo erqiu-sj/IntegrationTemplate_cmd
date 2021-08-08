@@ -13,7 +13,7 @@ func ValidateSectionName(result string) error {
 	}
 	return nil
 }
-func AddSection(result string, filePtr *ini.File) {
+func AddSection(result string, filePtr *ini.File, allIniExecutableFileConfig map[string]RunIniFileConfigure) {
 	if result != ADD_SECTION {
 		return
 	}

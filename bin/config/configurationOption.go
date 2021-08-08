@@ -5,10 +5,10 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-type RunOptionsCallerFnGroup func(result string, filePtr *ini.File)
+type RunOptionsCallerFnGroup func(result string, filePtr *ini.File, allIniExecutableFileConfig map[string]RunIniFileConfigure)
 
 // RunOptions 展示选项
-func RunOptions(selectOption promptui.Select, fnGroup []RunOptionsCallerFnGroup, filePtr *ini.File) {
+func RunOptions(selectOption promptui.Select, fnGroup []RunOptionsCallerFnGroup, filePtr *ini.File, allIniExecutableFileConfig map[string]RunIniFileConfigure) {
 
 	prompt := selectOption
 
@@ -19,6 +19,6 @@ func RunOptions(selectOption promptui.Select, fnGroup []RunOptionsCallerFnGroup,
 		return
 	}
 	for _, fn := range fnGroup {
-		fn(result, filePtr)
+		fn(result, filePtr, allIniExecutableFileConfig)
 	}
 }

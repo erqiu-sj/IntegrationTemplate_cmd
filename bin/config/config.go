@@ -6,3 +6,9 @@ type IniFileConfigure struct {
 	ExecuteBeforePulling string `ini:"executeBeforePulling"` // 拉去前执行
 	AfterPulling         string `ini:"afterPulling"`         // 仓库拉取后执行
 }
+
+type RunIniFileConfigure struct {
+	Depository           string     // 拉取的仓库
+	ExecuteBeforePulling [][]string // [['echo','wow']]
+	AfterPulling         [][]string // [['echo','wow']]
+}
